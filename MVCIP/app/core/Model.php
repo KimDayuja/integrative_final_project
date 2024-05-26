@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * Main Model trait
+ */
+trait Model
+{
+	use Database;
+
+	protected $limit = 10;
+	protected $offset = 0;
+	protected $order_type = "desc";
+	protected $order_column = "id";
+	public $errors = [];
+
+	public function findAll()
+	{
+
+		$query = "select * from $this->table";
+
+		return $this->query($query);
+	}
+
+	public function where($data, $data_not = [])
+	{
+		$keys = array_keys($data);
+		$keys_not = array_keys($data_not);
+		$query = "select * from $this->table where ";
+
+		foreach ($keys as $key) {
+			$query .= $key . " = :" . $key . " && ";
+		}
+
+		foreach ($keys_not as $key) {
+			$query .= $key . " != :" . $key . " && ";
+		}
+
+		$query = trim($query, " && ");
+
+		// $query .= " order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+		$data = array_merge($data, $data_not);
+
+		return $this->query($query, $data);
+	}
+
+	public function first($data, $data_not = [])
+	{
+		$keys = array_keys($data);
+		$keys_not = array_keys($data_not);
+		$query = "select * from $this->table where ";
+
+		foreach ($keys as $key) {
+			$query .= $key . " = :" . $key . " && ";
+		}
+
+		foreach ($keys_not as $key) {
+			$query .= $key . " != :" . $key . " && ";
+		}
+
+		$query = trim($query, " && ");
+
+		$query .= " limit $this->limit offset $this->offset";
+		$data = array_merge($data, $data_not);
+
+		$result = $this->query($query, $data);
+		if ($result)
+			return $result[0];
+
+		return false;
+	}
+
+	public function insert($data)
+	{
+
+		/** remove unwanted data **/
+		if (!empty($this->allowedColumns)) {
+			foreach ($data as $key => $value) {
+
+				if (!in_array($key, $this->allowedColumns)) {
+					unset($data[$key]);
+				}
+			}
+		}
+
+		$keys = array_keys($data);
+
+		$query = "insert into $this->table (" . implode(",", $keys) . ") values (:" . implode(",:", $keys) . ")";
+		$this->query($query, $data);
+
+		return false;
+	}
+
+	public function update($id, $data, $id_column = 'id')
+	{
+
+		/** remove unwanted data **/
+		if (!empty($this->allowedColumns)) {
+			foreach ($data as $key => $value) {
+
+				if (!in_array($key, $this->allowedColumns)) {
+					unset($data[$key]);
+				}
+			}
+		}
+
+		$keys = array_keys($data);
+		$query = "update $this->table set ";
+
+		foreach ($keys as $key) {
+			$query .= $key . " = :" . $key . ", ";
+		}
+
+		$query = trim($query, ", ");
+
+		$query .= " where $id_column = :$id_column ";
+
+		$data[$id_column] = $id;
+
+		$this->query($query, $data);
+		return false;
+
+	}
+
+	public function delete($id, $id_column = 'id')
+	{
+		$data[$id_column] = $id;
+		$query = "DELETE FROM $this->table WHERE $id_column = :$id_column";
+
+		if ($this->query($query, $data)) {
+			return true;
+		}
+	}
+
+	public function SearchMovie($title)
+	{
+		try {
+			$conn = $this->connect();
+			$statement = $conn->prepare("SELECT * FROM movie WHERE Title LIKE :title");
+			$title = "%" . $title . "%"; // for partial matching
+			$statement->bindParam(":title", $title, PDO::FETCH_ASSOC);
+			$statement->execute();
+
+			// Fetch all rows as an associative array
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			return $result;
+		} catch (Exception $e) {
+			throw $e;
+		}
+	}
+
+
+	public function FetchByCategory($value)
+	{
+		try {
+			$con = $this->connect();
+			$stm = $con->prepare("SELECT * FROM movie WHERE Genre LIKE :value");
+			$stm->bindParam(":value", $value);
+			$check = $stm->execute();
+			if ($check) {
+				$result = $stm->fetchAll(PDO::FETCH_OBJ);
+				if (is_array($result) && count($result)) {
+					return $result;
+				}
+			}
+
+			return false;
+		} catch (Exception $e) {
+			throw $e;
+		}
+	}
+
+}
