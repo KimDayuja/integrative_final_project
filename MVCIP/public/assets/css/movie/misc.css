@@ -1,0 +1,19 @@
+#logo {
+    font-size: 2rem !important;
+}
+
+#accent {
+    font-size: 3rem;
+    color: #CCC830 !important;
+}
+
+.browse-button {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+.browse-button:hover {
+    background-color: #CCC830;
+    color: hsl(200, 9%, 19%);
+}

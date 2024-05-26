@@ -1,0 +1,48 @@
+#navbarNav ul li a {
+    color: white !important;
+    font-size: 1.4rem !important;
+    border-bottom: 2px solid transparent !important; /* Add a transparent border */
+    transition: all 0.5s; /* Animate all changes */
+}
+
+#navbarNav ul li a:hover {
+    border-bottom: 0.3rem solid #CCC830 !important; /* Change the border color on hover */
+    
+}
+
+#sub-cat ul li a {
+    color: white !important;
+    text-decoration: none;
+    transition: all 0.5s; /* Animate all changes */
+}
+
+#sub-cat ul li {
+    transition: all 0.5s !important; /* Animate all changes */
+}
+
+#sub-cat ul li:hover {
+    background-color: #CCC830 !important; /* Change the background color on hover */
+    color: white;
+    border: 1px solid #CCC830 !important; /* Add a border on hover */
+}
+
+#sub-cat ul li a:hover {
+    color: hsl(200, 9%, 19%) !important;
+    font-size: large;
+}
+
+.card-effect {
+    transition: transform 0.3s ease-in-out; /* Add a transition effect */
+}
+
+.card-effect:hover {
+    transform: translateY(-10px); /* Move the card up by 10px when hovered */
+}
+
+.inner-card-effect {
+    transition: transform 0.3s ease-in-out; /* Add a transition effect */
+}
+
+.inner-card-effect:hover {
+    border: 1px solid #CCC830 !important;
+}

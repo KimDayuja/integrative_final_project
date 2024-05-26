@@ -1,0 +1,85 @@
+label, p{
+    color: #ffffff;
+  }
+
+.form-control {
+    border-radius: 7px;
+    border-color: white;
+    background-color: transparent !important;
+    padding: 10px;  
+    height: 53px;
+    width: 100%;
+    color: white !important;
+    margin: 0 auto;
+}
+
+.form-control::placeholder {
+    color: #747d85;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-control:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    background-color: transparent !important;
+}
+
+.text-custom{
+  color: rgb(184, 184, 184);
+}
+.text-custom:hover{
+  color: white;
+}
+
+    .accordion {
+            max-width: 100%; 
+            margin: 0 auto;
+        }
+        .accordion-item {
+            background-color: transparent;
+            border-color:  rgb(143, 143, 143);
+        }
+        .accordion-button {
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+            box-shadow: none;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color:transparent;
+            color: white;
+            box-shadow: none;
+        }
+        .accordion-body {
+            background-color: transparent;
+        }
+
+        /* For WebKit browsers */
+        input[type="date"]::-webkit-datetime-edit {
+            color:  rgb(143, 143, 143);
+        }
+
+        /* For Mozilla Firefox */
+        input[type="date"]::-moz-placeholder {
+            color:  rgb(143, 143, 143); 
+        }
+
+        input[type="date"]::-moz-placeholder-shown {
+            color:  rgb(143, 143, 143);
+        }
+
+        /* For Microsoft Edge */
+        input[type="date"]::-ms-input-placeholder {
+            color:  rgb(143, 143, 143);
+        }
+
+        /* Customizing placeholder text color */
+        input[type="date"]::placeholder {
+            color:  rgb(143, 143, 143);
+        }

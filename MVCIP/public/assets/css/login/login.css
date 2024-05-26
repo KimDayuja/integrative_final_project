@@ -1,0 +1,43 @@
+.btn-outline-light{
+    border-color:  rgb(143, 143, 143);
+    color:  rgb(143, 143, 143);
+}
+
+label, p{
+    color: #ffffff;
+}
+
+.form-control {
+    border-radius: 7px;
+    border-color: rgb(143, 143, 143);
+    background-color: transparent !important;
+    padding: 10px;  
+    height: 53px;
+    width: 65%;
+    color: #ffffff !important;
+    margin: 0 auto;
+}
+
+.form-control::placeholder {
+    color: #747d85;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-control:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    background-color: transparent !important;
+}
+
+.text-custom{
+  color: rgb(184, 184, 184);
+}
+.text-custom:hover{
+  color: white;
+}

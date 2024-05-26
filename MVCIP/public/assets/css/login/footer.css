@@ -1,0 +1,28 @@
+footer #misc ul li {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+}
+
+#footer-wrapper {
+    padding: 5rem 0 5rem 0 !important;
+}
+
+.base-color {
+    background-image: linear-gradient(to bottom, #0F131E, #0F1014);
+}
+
+#follow-us {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+}
+
+#socials ul li {
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+#credits {
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 300;
+}
