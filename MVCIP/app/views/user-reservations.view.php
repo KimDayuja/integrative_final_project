@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinema Seat Reservation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= ROOT ?>/assets/css/sstyle.css">
     <style>
         /* Additional styles for visualization */
@@ -16,10 +18,46 @@
                 width: 100%;
             }
         }
+
+        .form-control{
+            border-radius: 7px;
+            border-color: rgb(143, 143, 143);
+            background-color: transparent !important;
+            padding: 10px;  
+            height: 53px;
+            width: 25%; 
+            color: #ffffff !important;
+            margin: 0 auto;
+        }
+
+        .form-control::placeholder, .form-select::placeholder {
+            color: #747d85;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .form-control:-webkit-autofill, .form-select:-webkit-autofill {
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+            background-color: transparent !important;
+        }
+
+        .form-control option {
+            background-color: #242333;
+            color: white;
+            border: none !important;
+        }
+        
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- text center -->
+    <div class="container text-center">
         <div class="header">
             <h2>Reserve a Seat</h2>
         </div>
@@ -28,7 +66,8 @@
                 <label for="movieID">Movie ID:</label>
                 <input type="text" id="movieID" name="movieID" class="form-control form-control-user" required readonly value="<?= htmlspecialchars($MovieID) ?>">
             </div>
-            <div class="form-group">
+            <!-- my-3 -->
+            <div class="form-group my-3">
                 <label for="userID">User ID:</label>
                 <input type="text" id="userID" name="userID" class="form-control form-control-user" required readonly value="<?= htmlspecialchars($user_id) ?>">
             </div>
@@ -43,7 +82,8 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <input type="submit" id="reserve-btn" value="Reserve" class="btn btn-primary btn-user btn-block">
+            <!-- btnlight, mt-3,  style="width: 25%; -->
+            <input type="submit" id="reserve-btn" value="Reserve" class="btn btn-light btn-user btn-block mt-3"  style="width: 25%;">
         </form>
     </div>
     
